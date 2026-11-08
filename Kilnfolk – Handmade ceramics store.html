@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kilnfolk – Handmade ceramics for everyday use</title>
+<meta name="description" content="Kilnfolk makes small-batch mugs, bowls, vases and lamps, glazed by hand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;600&display=swap">
+<style>
+:root{--bg:#F3F4FB;--ink:#14162B;--mut:#4A4F6E;--card:#fff;--line:#C9CEEA;--btn:#1B2A6B;--btnink:#fff;--hero:#1B2A6B;--acc:#F2B134;--err:#B3261E;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1226;--ink:#EEF0FF;--mut:#B4B9DA;--card:#181C3A;--line:#343A6B;--btn:#F2B134;--btnink:#14162B;--hero:#1A2050;--err:#FF8A80}}
+:root[data-theme="dark"]{--bg:#0F1226;--ink:#EEF0FF;--mut:#B4B9DA;--card:#181C3A;--line:#343A6B;--btn:#F2B134;--btnink:#14162B;--hero:#1A2050;--err:#FF8A80}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(90px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 Figtree,system-ui,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+h1,h2,h3{font-family:"Bricolage Grotesque",Georgia,sans-serif;line-height:1.1;margin:0}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;letter-spacing:-.02em}
+a{color:inherit}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px;box-shadow:0 0 0 6px #14162B}
+.skip{position:absolute;left:1rem;top:-5rem;background:var(--acc);color:#14162B;padding:.7rem 1rem;border-radius:8px;z-index:50;font-weight:600}
+.skip:focus{top:1rem}
+.wrap{max-width:1180px;margin:0 auto;padding:0 1.25rem}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:2px solid var(--ink)}
+.bar{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;min-height:72px;padding:.5rem 1.25rem}
+.logo{font:800 1.6rem "Bricolage Grotesque",sans-serif;text-decoration:none;letter-spacing:-.03em;margin-right:auto}
+nav ul{display:flex;gap:.25rem;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav a{display:block;padding:.55rem .85rem;border-radius:999px;text-decoration:none;font-weight:600}
+nav a:hover{background:var(--line)}
+nav a[aria-current="true"]{background:var(--ink);color:var(--bg)}
+.btn{font:600 1rem Figtree,sans-serif;background:var(--btn);color:var(--btnink);border:2px solid var(--btn);border-radius:999px;padding:.7rem 1.4rem;cursor:pointer;min-height:44px;text-decoration:none;display:inline-block;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+#cartBtn{display:flex;align-items:center;gap:.6rem}
+#count{background:var(--acc);color:#14162B;border-radius:999px;min-width:1.7rem;padding:0 .45rem;text-align:center;font-weight:800}
+#count.bump{animation:bump .35s}
+@keyframes bump{50%{transform:scale(1.35)}}
+.hero{background:var(--hero);color:#fff;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center;padding-top:4rem;padding-bottom:4rem}
+.hero h1{font-size:clamp(2.8rem,8vw,6rem);font-weight:800;letter-spacing:-.04em}
+.hero p{max-width:34rem;font-size:1.2rem;color:#E4E7FF;margin:1.25rem 0 2rem}
+.hero .btn{background:var(--acc);border-color:var(--acc);color:#14162B;font-size:1.15rem;padding:.9rem 2rem}
+.stack{position:relative;aspect-ratio:1;max-width:460px;width:100%;justify-self:center}
+.stack svg{position:absolute;width:62%;animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.stack svg:nth-child(1){left:0;top:20%}
+.stack svg:nth-child(2){right:0;top:0;animation-delay:.12s}
+.stack svg:nth-child(3){right:8%;bottom:0;animation-delay:.24s}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}}
+section{padding:4.5rem 0}
+.tools{display:flex;gap:1rem;flex-wrap:wrap;align-items:end;margin:1.5rem 0 2rem}
+.tools label{display:block;font-weight:600;margin-bottom:.25rem}
+input,textarea{font:inherit;color:var(--ink);background:var(--card);border:2px solid var(--ink);border-radius:10px;padding:.65rem .85rem;min-height:44px;width:100%}
+.tools .s{flex:1 1 260px}
+.chips{display:flex;gap:.5rem;flex-wrap:wrap;border:0;margin:0;padding:0}
+.chips legend{font-weight:600;margin-bottom:.25rem;padding:0}
+.chips button{font:600 1rem Figtree,sans-serif;background:transparent;color:var(--ink);border:2px solid var(--ink);border-radius:999px;padding:.5rem 1rem;min-height:44px;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.5rem;list-style:none;margin:0;padding:0}
+.card{background:var(--card);border:2px solid var(--ink);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;height:100%}
+.card .art{aspect-ratio:1;display:grid;place-items:center}
+.card .art svg{width:70%}
+.card .body{padding:1rem 1.1rem 1.2rem;display:flex;flex-direction:column;gap:.35rem;flex:1}
+.card h3{font-size:1.3rem}
+.cat{color:var(--mut);margin:0;font-size:.95rem}
+.stars{font-size:1.1rem;letter-spacing:2px;background:linear-gradient(90deg,#E39A00 var(--p),var(--line) var(--p));-webkit-background-clip:text;background-clip:text;color:transparent}
+.rate{display:flex;gap:.5rem;align-items:center;margin:0;color:var(--mut);font-size:.95rem}
+.price{font:800 1.4rem "Bricolage Grotesque",sans-serif;margin-top:auto;padding-top:.5rem}
+.card .btn{width:100%;text-align:center}
+.none{padding:2rem;border:2px dashed var(--ink);border-radius:18px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-top:2rem}
+.col{text-align:left;border:2px solid var(--ink);border-radius:18px;padding:1.5rem;background:var(--card);color:var(--ink);cursor:pointer;font:inherit;min-height:170px;display:flex;flex-direction:column;justify-content:space-between;transition:background .2s}
+.col:hover{background:var(--acc);color:#14162B}
+.col strong{font:800 1.6rem "Bricolage Grotesque",sans-serif}
+.about{background:var(--ink);color:var(--bg)}
+.about p{max-width:40rem;font-size:1.2rem}
+.about a{color:var(--acc)}
+footer{padding:2rem 0 3rem;border-top:2px solid var(--ink);color:var(--mut)}
+dialog{border:0;padding:0;margin:0 0 0 auto;height:100dvh;max-height:100dvh;width:min(440px,100vw);background:var(--bg);color:var(--ink);box-shadow:-8px 0 0 var(--ink)}
+dialog::backdrop{background:rgba(10,12,30,.65)}
+dialog[open]{animation:slide .3s ease-out}
+@keyframes slide{from{transform:translateX(100%)}}
+.dhead{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 1.4rem;border-bottom:2px solid var(--ink);position:sticky;top:0;background:var(--bg)}
+.dhead h2{font-size:1.6rem}
+.dhead h2:focus{outline:none}
+.dbody{padding:1.2rem 1.4rem 2rem}
+#items{list-style:none;margin:0 0 1rem;padding:0;display:grid;gap:.9rem}
+#items li{display:grid;grid-template-columns:64px 1fr auto;gap:.8rem;align-items:center;border-bottom:1px solid var(--line);padding-bottom:.9rem}
+#items .t{width:64px;aspect-ratio:1;border-radius:12px;display:grid;place-items:center}
+#items .t svg{width:80%}
+#items p{margin:0}
+.qty{display:flex;align-items:center;gap:.4rem;margin-top:.3rem}
+.qty button{width:44px;height:44px;border-radius:50%;border:2px solid var(--ink);background:transparent;color:var(--ink);font-size:1.2rem;cursor:pointer}
+.rm{background:none;border:0;color:var(--ink);text-decoration:underline;cursor:pointer;font:inherit;min-height:44px;padding:0 .4rem}
+dl.tot{display:grid;grid-template-columns:1fr auto;gap:.3rem 1rem;margin:1rem 0}
+dl.tot dt,dl.tot dd{margin:0}
+dl.tot .g{font:800 1.3rem "Bricolage Grotesque",sans-serif;border-top:2px solid var(--ink);padding-top:.5rem}
+.f{margin-bottom:1rem}
+.f label{font-weight:600;display:block;margin-bottom:.25rem}
+.f input[aria-invalid="true"]{border-color:var(--err)}
+.er{color:var(--err);margin:.25rem 0 0;font-size:.95rem;font-weight:600}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.acts{display:flex;gap:.7rem;flex-wrap:wrap}
+@media (max-width:820px){.hero .wrap{grid-template-columns:1fr}.stack{max-width:320px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<div id="live" class="sr" role="status" aria-live="polite"></div>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top" aria-label="Kilnfolk, home">Kilnfolk</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#top" aria-current="true">Home</a></li>
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#collections">Collections</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="btn" id="cartBtn" type="button" aria-haspopup="dialog" aria-label="Open cart, 0 items">
+      <span>Cart</span><span id="count" aria-hidden="true">0</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="h1" style="padding:0">
+    <div class="wrap">
+      <div>
+        <h1 id="h1">Made slowly. Used daily.</h1>
+        <p>Small-batch mugs, bowls, vases and lamps, thrown and glazed by hand in our studio. Built for kitchens that get used.</p>
+        <a class="btn" href="#shop">Shop now</a>
+      </div>
+      <div class="stack" id="stack" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section id="shop" aria-labelledby="shopT">
+    <div class="wrap">
+      <h2 id="shopT">Shop the studio</h2>
+      <form class="tools" role="search" aria-label="Search and filter products" onsubmit="return false">
+        <div class="s">
+          <label for="q">Search products</label>
+          <input id="q" type="search" placeholder="Try “mug” or “lamp”" autocomplete="off">
+        </div>
+        <fieldset class="chips" id="chips"><legend>Category</legend></fieldset>
+      </form>
+      <p id="status" aria-live="polite"></p>
+      <ul class="grid" id="grid"></ul>
+    </div>
+  </section>
+
+  <section id="collections" aria-labelledby="colT" style="padding-top:0">
+    <div class="wrap">
+      <h2 id="colT">Collections</h2>
+      <div class="cols" id="cols"></div>
+    </div>
+  </section>
+
+  <section class="about" id="about" aria-labelledby="abT">
+    <div class="wrap">
+      <h2 id="abT">Four potters, one kiln</h2>
+      <p>Every piece is thrown on a wheel, dried for a week and fired twice. Glazes are mixed in-house, so no two batches match exactly. That’s a feature.</p>
+      <p>Orders over $75 ship free. Anything that arrives broken, we replace.</p>
+    </div>
+  </section>
+
+  <section id="contact" aria-labelledby="coT">
+    <div class="wrap">
+      <h2 id="coT">Contact</h2>
+      <p>Questions about an order or a custom set? Email <a href="mailto:hello@kilnfolk.example">hello@kilnfolk.example</a>. We reply within one working day.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><p>© 2026 Kilnfolk. Sample brand for demonstration; no real orders are placed.</p></div>
+</footer>
+
+<dialog id="drawer" aria-labelledby="dt">
+  <div class="dhead">
+    <h2 id="dt" tabindex="-1">Your cart</h2>
+    <button class="btn ghost" id="close" type="button" aria-label="Close cart">Close</button>
+  </div>
+  <div class="dbody">
+    <div id="vCart">
+      <p id="empty">Your cart is empty. Pick something from the shop to get started.</p>
+      <ul id="items"></ul>
+      <dl class="tot" id="tot">
+        <dt>Subtotal</dt><dd id="sub">$0.00</dd>
+        <dt>Shipping</dt><dd id="ship">$0.00</dd>
+        <dt class="g">Total</dt><dd class="g" id="total">$0.00</dd>
+      </dl>
+      <button class="btn" id="toCo" type="button" style="width:100%">Go to checkout</button>
+    </div>
+
+    <form id="vCo" hidden novalidate aria-labelledby="coH">
+      <h3 id="coH" tabindex="-1" style="margin-bottom:1rem">Checkout</h3>
+      <div class="f"><label for="n">Full name</label><input id="n" name="n" autocomplete="name" required aria-describedby="e-n"><p class="er" id="e-n" hidden></p></div>
+      <div class="f"><label for="e">Email</label><input id="e" name="e" type="email" autocomplete="email" required aria-describedby="e-e"><p class="er" id="e-e" hidden></p></div>
+      <div class="f"><label for="a">Street address</label><input id="a" name="a" autocomplete="street-address" required aria-describedby="e-a"><p class="er" id="e-a" hidden></p></div>
+      <div class="row">
+        <div class="f"><label for="c">City</label><input id="c" name="c" autocomplete="address-level2" required aria-describedby="e-c"><p class="er" id="e-c" hidden></p></div>
+        <div class="f"><label for="z">Postcode</label><input id="z" name="z" autocomplete="postal-code" required aria-describedby="e-z"><p class="er" id="e-z" hidden></p></div>
+      </div>
+      <p id="coTot" style="font-weight:600"></p>
+      <p style="color:var(--mut);font-size:.95rem">Demo only: no payment is taken and nothing is stored.</p>
+      <div class="acts"><button class="btn" type="submit">Place order</button><button class="btn ghost" type="button" id="back">Back to cart</button></div>
+    </form>
+
+    <div id="vDone" hidden>
+      <h3 id="doneH" tabindex="-1" style="margin-bottom:.7rem">Order placed</h3>
+      <p id="doneP"></p>
+      <button class="btn" type="button" id="doneBtn">Keep shopping</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+const P=[
+{id:1,n:"Ember Mug",c:"Mugs",p:28,r:4.8,v:124,s:"mug",a:"#1B2A6B",b:"#0E1740",bg:"#F7D77E"},
+{id:2,n:"Moss Mug",c:"Mugs",p:28,r:4.6,v:88,s:"mug",a:"#3E6B4F",b:"#27472F",bg:"#D9E8D2"},
+{id:3,n:"Ash Tall Vase",c:"Vases",p:64,r:4.9,v:57,s:"vase",a:"#D9D4E8",b:"#8B84B5",bg:"#2B3270"},
+{id:4,n:"Saffron Bud Vase",c:"Vases",p:42,r:4.5,v:73,s:"vase",a:"#F2B134",b:"#C98412",bg:"#DCE1FA"},
+{id:5,n:"Wide Serving Bowl",c:"Bowls",p:56,r:4.7,v:41,s:"bowl",a:"#C8473A",b:"#8F2A20",bg:"#F6E3DD"},
+{id:6,n:"Speckle Cereal Bowl",c:"Bowls",p:24,r:4.4,v:210,s:"bowl",a:"#EDEBF5",b:"#9A97B8",bg:"#4A5BC0"},
+{id:7,n:"Kiln Table Lamp",c:"Lighting",p:138,r:4.8,v:36,s:"lamp",a:"#1B2A6B",b:"#F2B134",bg:"#E6E9FB"},
+{id:8,n:"Glow Shade Lamp",c:"Lighting",p:96,r:4.3,v:29,s:"lamp",a:"#F2B134",b:"#2B3270",bg:"#B9C3F2"}];
+const CATS=["All","Mugs","Vases","Bowls","Lighting"];
+const COLS=[["Morning ritual","Mugs","Cups that hold heat and look good doing it."],["Shelf life","Vases","Shapes for one stem or a full bunch."],["Table settings","Bowls","Serve, share and stack."]];
+const $=s=>document.querySelector(s),fmt=n=>"$"+n.toFixed(2);
+let cat="All",cart={};
+try{cart=JSON.parse(localStorage.getItem("kf-cart")||"{}")}catch(e){}
+
+function art(s,a,b){
+  const m={mug:`<rect x="55" y="70" width="85" height="90" rx="14" fill="${a}"/><path d="M140 90h14a18 18 0 010 40h-14" fill="none" stroke="${a}" stroke-width="10"/><ellipse cx="97" cy="70" rx="42" ry="9" fill="${b}"/>`,
+  vase:`<path d="M85 40h30l-4 30c30 20 38 50 22 90H67c-16-40-8-70 22-90z" fill="${a}"/><ellipse cx="100" cy="40" rx="15" ry="5" fill="${b}"/>`,
+  bowl:`<path d="M30 90h140c0 45-30 70-70 70s-70-25-70-70z" fill="${a}"/><ellipse cx="100" cy="90" rx="70" ry="10" fill="${b}"/>`,
+  lamp:`<path d="M65 50h70l20 60H45z" fill="${a}"/><rect x="95" y="110" width="10" height="35" fill="${b}"/><ellipse cx="100" cy="155" rx="32" ry="8" fill="${b}"/>`}[s];
+  return `<svg viewBox="0 0 200 200" aria-hidden="true" focusable="false"><ellipse cx="100" cy="168" rx="62" ry="6" fill="#0003"/>${m}</svg>`;
+}
+const say=t=>{const l=$("#live");l.textContent="";setTimeout(()=>l.textContent=t,50)};
+const count=()=>Object.values(cart).reduce((a,b)=>a+b,0);
+const save=()=>{try{localStorage.setItem("kf-cart",JSON.stringify(cart))}catch(e){}};
+
+// Hero art
+$("#stack").innerHTML=art("vase","#F2B134","#C98412")+art("mug","#fff","#B9C3F2")+art("bowl","#C8473A","#8F2A20");
+
+// Filters
+$("#chips").insertAdjacentHTML("beforeend",CATS.map(c=>`<button type="button" aria-pressed="${c===cat}" data-c="${c}">${c}</button>`).join(""));
+$("#chips").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;setCat(b.dataset.c)});
+function setCat(c){cat=c;document.querySelectorAll("#chips button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.c===c));renderGrid()}
+$("#q").addEventListener("input",renderGrid);
+
+function renderGrid(){
+  const q=$("#q").value.trim().toLowerCase();
+  const list=P.filter(p=>(cat==="All"||p.c===cat)&&(p.n+" "+p.c).toLowerCase().includes(q));
+  $("#status").textContent=list.length?`Showing ${list.length} ${list.length===1?"product":"products"}${cat!=="All"?" in "+cat:""}.`:"";
+  $("#grid").innerHTML=list.length?list.map(p=>`<li><article class="card" aria-labelledby="p${p.id}">
+    <div class="art" style="background:${p.bg}">${art(p.s,p.a,p.b)}</div>
+    <div class="body"><p class="cat">${p.c}</p><h3 id="p${p.id}">${p.n}</h3>
+    <p class="rate"><span class="stars" style="--p:${p.r/5*100}%" aria-hidden="true">★★★★★</span><span class="sr">Rated ${p.r} out of 5 from ${p.v} reviews</span><span aria-hidden="true">${p.r} (${p.v})</span></p>
+    <p class="price"><span class="sr">Price: </span>${fmt(p.p)}</p>
+    <button class="btn" type="button" data-add="${p.id}" aria-label="Add ${p.n} to cart, ${fmt(p.p)}">Add to cart</button></div></article></li>`).join("")
+    :`<li class="none"><p>No products match “${q.replace(/[<>&]/g,"")}”. Clear the search or choose another category.</p></li>`;
+  if(!list.length)say("No products found.");
+}
+$("#grid").addEventListener("click",e=>{const b=e.target.closest("[data-add]");if(!b)return;
+  const p=P.find(x=>x.id==b.dataset.add);cart[p.id]=(cart[p.id]||0)+1;save();update();
+  const c=$("#count");c.classList.remove("bump");void c.offsetWidth;c.classList.add("bump");
+  say(`${p.n} added to cart. Cart has ${count()} ${count()===1?"item":"items"}.`)});
+
+// Collections
+$("#cols").innerHTML=COLS.map(c=>`<button class="col" type="button" data-c="${c[1]}"><strong>${c[0]}</strong><span>${c[2]} Browse ${c[1].toLowerCase()}.</span></button>`).join("");
+$("#cols").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;setCat(b.dataset.c);$("#shop").scrollIntoView();$("#shopT").tabIndex=-1;$("#shopT").focus()});
+
+// Cart
+function totals(){const sub=Object.entries(cart).reduce((a,[id,q])=>a+P.find(p=>p.id==id).p*q,0);const ship=sub===0||sub>=75?0:6;return{sub,ship,total:sub+ship}}
+function update(){
+  const n=count(),t=totals();
+  $("#count").textContent=n;
+  $("#cartBtn").setAttribute("aria-label",`Open cart, ${n} ${n===1?"item":"items"}, ${fmt(t.total)}`);
+  $("#empty").hidden=n>0;$("#tot").hidden=!n;$("#toCo").disabled=!n;
+  $("#items").innerHTML=Object.entries(cart).map(([id,q])=>{const p=P.find(x=>x.id==id);return `<li>
+    <div class="t" style="background:${p.bg}">${art(p.s,p.a,p.b)}</div>
+    <div><p><strong>${p.n}</strong></p><p>${fmt(p.p)} each</p>
+    <div class="qty" role="group" aria-label="Quantity for ${p.n}"><button type="button" data-d="-1" data-id="${id}" aria-label="Decrease quantity of ${p.n}">−</button><span aria-live="polite" aria-label="Quantity ${q}">${q}</span><button type="button" data-d="1" data-id="${id}" aria-label="Increase quantity of ${p.n}">+</button></div></div>
+    <div><p><strong>${fmt(p.p*q)}</strong></p><button class="rm" type="button" data-rm="${id}" aria-label="Remove ${p.n} from cart">Remove</button></div></li>`}).join("");
+  $("#sub").textContent=fmt(t.sub);$("#ship").textContent=t.ship?fmt(t.ship):"Free";$("#total").textContent=fmt(t.total);
+  $("#coTot").textContent=`Order total: ${fmt(t.total)}`;
+}
+$("#items").addEventListener("click",e=>{
+  const d=e.target.closest("[data-d]"),r=e.target.closest("[data-rm]");
+  if(d){const id=d.dataset.id;cart[id]+=+d.dataset.d;const p=P.find(x=>x.id==id);
+    if(cart[id]<1){delete cart[id];say(`${p.n} removed from cart.`);save();update();$("#close").focus();return}
+    save();update();say(`${p.n} quantity ${cart[id]}. Total ${fmt(totals().total)}.`);
+    document.querySelector(`[data-id="${id}"][data-d="${d.dataset.d}"]`)?.focus()}
+  if(r){const p=P.find(x=>x.id==r.dataset.rm);delete cart[p.id];save();update();say(`${p.n} removed from cart.`);$("#close").focus()}
+});
+
+const dlg=$("#drawer");
+function view(v){["vCart","vCo","vDone"].forEach(x=>$("#"+x).hidden=x!==v);
+  const h={vCart:"#dt",vCo:"#coH",vDone:"#doneH"}[v];$(h).focus()}
+$("#cartBtn").onclick=()=>{view("vCart");dlg.showModal();$("#dt").focus()};
+$("#close").onclick=()=>dlg.close();
+dlg.addEventListener("click",e=>{if(e.target===dlg)dlg.close()});
+$("#toCo").onclick=()=>view("vCo");
+$("#back").onclick=()=>view("vCart");
+$("#doneBtn").onclick=()=>{dlg.close();$("#shop").scrollIntoView()};
+
+// Checkout
+const MSG={n:"Enter your full name.",e:"Enter a valid email address, like name@example.com.",a:"Enter your street address.",c:"Enter your city.",z:"Enter your postcode."};
+$("#vCo").addEventListener("submit",e=>{
+  e.preventDefault();let first=null;
+  for(const k of Object.keys(MSG)){const i=$("#"+k),er=$("#e-"+k);
+    const ok=i.value.trim()&&(k!=="e"||/^\S+@\S+\.\S+$/.test(i.value.trim()));
+    i.setAttribute("aria-invalid",!ok);er.hidden=ok;er.textContent=ok?"":MSG[k];if(!ok&&!first)first=i}
+  if(first){first.focus();say("Checkout has errors. "+MSG[first.id]);return}
+  const t=totals(),ref="KF-"+Math.floor(10000+Math.random()*90000);
+  $("#doneP").textContent=`Thank you, ${$("#n").value.trim()}. Order ${ref} for ${fmt(t.total)} is confirmed. A receipt will go to ${$("#e").value.trim()}.`;
+  cart={};save();update();e.target.reset();view("vDone");say("Order placed. "+$("#doneP").textContent);
+});
+
+// Nav current-section marker
+const links=[...document.querySelectorAll("nav a")];
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting)links.forEach(a=>a.toggleAttribute("aria-current",a.getAttribute("href")==="#"+en.target.id)||0),links.forEach(a=>{if(a.hasAttribute("aria-current"))a.setAttribute("aria-current","true")})}),{rootMargin:"-40% 0px -55% 0px"});
+["top","shop","collections","about","contact"].forEach(id=>io.observe(document.getElementById(id)));
+
+renderGrid();update();
+</script>
+</body>
+</html>
